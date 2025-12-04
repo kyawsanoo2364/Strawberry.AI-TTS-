@@ -10,6 +10,11 @@ import { Response } from 'express';
 export class AppController {
   constructor(private readonly appService: AppService) {}
 
+  @Get('health')
+  health() {
+    return this.appService.health();
+  }
+
   @UseGuards(ClerkAuthGuard, RoleGuard)
   @ROLES(Role.ADMIN)
   @Get()

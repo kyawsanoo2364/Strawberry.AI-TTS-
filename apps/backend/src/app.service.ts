@@ -7,4 +7,8 @@ export class AppService {
   async getUser(userId: string, res: Response) {
     return res.json({ userId });
   }
+
+  health() {
+    return 'Good';
+  }
 }
