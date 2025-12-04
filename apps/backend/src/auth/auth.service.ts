@@ -1,6 +1,6 @@
 import { clerkClient } from '@clerk/clerk-sdk-node';
 import { Injectable } from '@nestjs/common';
-import { User } from 'src/generated/prisma/client';
+
 import { Prisma } from 'src/prisma/prisma';
 
 @Injectable()
