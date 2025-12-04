@@ -12,7 +12,7 @@
     "resolvePackageJsonImports": true,
     "allowSyntheticDefaultImports": true,
     "target": "ES2023",
-    "sourceMap": true,
+    "sourceMap": false,
     "outDir": "./dist",
     "baseUrl": "./",
     "strict": true,
