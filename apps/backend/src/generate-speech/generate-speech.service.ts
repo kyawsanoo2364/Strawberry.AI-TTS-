@@ -3,20 +3,19 @@ import { GenerateSpeechDto } from './dtos/generate.dto';
 import { TtsService } from 'src/tts/tts.service';
 import { Response } from 'express';
 
-// Helper function to generate a random break tag
-const randomBreak = (min: number, max: number): string =>
-  `<break time="${Math.floor(Math.random() * (max - min + 1)) + min}ms"/>`;
-
-// Define standard break lengths for clarity
-const INTER_WORD_BREAK = randomBreak(100, 200); // Shortest pause
-const PHRASE_BREAK = randomBreak(250, 400); // Comma equivalent (for '၊')
-const SENTENCE_BREAK = randomBreak(600, 800); // Full stop equivalent (for '.' and '။')
-
 @Injectable()
 export class GenerateSpeechService {
   constructor(private readonly ttsService: TtsService) {}
 
   async generate(generateSpeechDto: GenerateSpeechDto, res: Response) {
+    // Helper function to generate a random break tag
+    const randomBreak = (min: number, max: number): string =>
+      `<break time="${Math.floor(Math.random() * (max - min + 1)) + min}ms"/>`;
+
+    // Define standard break lengths for clarity
+    const INTER_WORD_BREAK = randomBreak(100, 200); // Shortest pause
+    const PHRASE_BREAK = randomBreak(250, 400); // Comma equivalent (for '၊')
+    const SENTENCE_BREAK = randomBreak(600, 800); // Full stop equivalent (for '.' and '။')
     let ssml = generateSpeechDto.text;
 
     // Handle Punctuation Pauses (Longer breaks for sentence stops)
