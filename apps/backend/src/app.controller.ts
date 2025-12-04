@@ -14,12 +14,4 @@ export class AppController {
   getHello() {
     return 'Hello! Strawberry';
   }
-
-  @UseGuards(ClerkAuthGuard, RoleGuard)
-  @ROLES(Role.ADMIN)
-  @Get()
-  async cats(@Req() req: any, @Res() res: any) {
-    const userId = req.user.id;
-    return this.appService.getUser(userId, res);
-  }
 }
